@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas Grid</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,200;0,300;0,500;0,700;1,200;1,300;1,400;1,500;1,600&family=Orbitron:wght@500&display=swap" rel="stylesheet">
+
+    <style>
+        canvas {
+            background-color: black;
+        }
+        text {
+            font-size: 30px;
+            font-style: italic;
+            font-family: 'Orbitron', sans-serif;
+            fill:blue; 
+            stroke:cornflowerblue;
+            stroke-width: 2;
+            letter-spacing: 3px;
+        }
+
+    </style>
+</head>
+<body onload="draw()">
+    <!-- <center> -->
+    <div style="position:relative">
+        
+        <!-- <canvas id="canvas" width="800" height="540"></canvas> -->
+        <canvas id="canvas" width="1260" height="540"></canvas>
+        <svg width="460" height="180" style="background-color: transparent; position:absolute; top: 182; left: 420; z-index:2;">
+
+        <!-- <svg width="410" height="180" style="background-color: transparent; position:absolute; top: 182; left: 202; z-index:2;"> -->
+    <!--         x1 = 202 y1 = 162 -->
+            <path id="H1-L1" d="
+                M 0 0
+                L 0 45
+                L 5 50
+                L 10 45 
+                L 10 10
+                L 0 0
+            " stroke="transparent" stroke-width="3" fill="none"/>
+
+            <path id="H1-L2" d="
+                M 5 50
+                L 0 55
+                L 0 100
+                L 10 90
+                L 10 55
+                L 5 50
+            " stroke="transparent" stroke-width="3" fill="none"/>
+            <path id="H1-TOP" d="
+                M 0 0
+                L 50 0
+                L 40 10
+                L 10 10
+                L 0 0 
+            " stroke="transparent" stroke-width="3" fill="none"/>
+            <path stroke-width="3" id="H1-R1" d="
+                M 50 0
+                L 40 10
+                L 40 45
+                L 45 50
+                L 50 45
+                L 50 0
+            " stroke="transparent" stroke-width="3" fill="none"/>
+            <path id="H1-R2" d="
+                M 45 50
+                L 40 55
+                L 40 90
+                L 50 100
+                L 50 55
+                L 45 50
+            " stroke="transparent" stroke-width="3" fill="none"/>
+            <path id="H1-BOT" d="
+                M 50 100
+                L 0 100
+                L 10 90
+                L 40 90
+                L 50 100
+            " stroke="transparent" stroke-width="3" fill="none"/>
+            <path id="H1-MID" d="
+                M 10 45
+                L 5 50
+                L 10 55
+                L 40 55
+                L 45 50
+                L 40 45
+                L 10 45
+                " stroke="transparent" stroke-width="3" fill="none" />
+            
+    <!--         h2 -->
+            <path class="H2" id="H2-L1" d="
+                M 60 0
+                L 60 45
+                L 65 50
+                L 70 45 
+                L 70 10
+                L 60 0
+            " stroke="black" stroke-width="3" fill="cornflowerblue"/>
+            <path class="H2" id="H2-L2" d="
+                M 65 50
+                L 60 55
+                L 60 100
+                L 70 90
+                L 70 55
+                L 65 50
+            " stroke="black" stroke-width="3" fill="cornflowerblue"/>
+            <path class="H2" id="H2-TOP" d="
+                M 60 0
+                L 110 0
+                L 100 10
+                L 70 10
+                L 60 0 
+            " stroke="black" stroke-width="3" fill="cornflowerblue"/>
+            <path class="H2" id="H2-R1" d="
+                M 110 0
+                L 100 10
+                L 100 45
+                L 105 50
+                L 110 45
+                L 110 0
+            " stroke="black" stroke-width="3" fill="blue"/>
+            <path class="H2" id="H2-R2" d="
+                M 105 50
+                L 100 55
+                L 100 90
+                L 110 100
+                L 110 55
+                L 105 50
+            " stroke="black" stroke-width="3" fill="blue"/>
+            <path class="H2" id="H2-BOT" d="
+                M 110 100
+                L 60 100
+                L 70 90
+                L 100 90
+                L 110 100
+            " stroke="black" stroke-width="3" fill="cornflowerblue"/>
+            <path class="H2" id="H2-MID" d="
+                M 70 45
+                L 65 50
+                L 70 55
+                L 100 55
+                L 105 50
+                L 100 45
+                L 70 45
+                " stroke="black" stroke-width="3" fill="blue" />
+            
+    <!--         DOTS 1 -->
+            <path id="dots-11" d="
+                M 120 30
+                L 120 40
+                L 130 40
+                L 130 30
+                L 120 30                  
+                " stroke="black" stroke-width="3" fill="gray" />
+            
+            <path id="dots-12" d="
+                M 120 70
+                L 120 60
+                L 130 60
+                L 130 70
+                L 120 70                  
+                " stroke="black" stroke-width="3" fill="gray" />
+            
+    <!--         MINUTE HAND -->
+            <path class="M1" id="M1-L1" d="
+                M 140 0
+                L 140 45
+                L 145 50
+                L 150 45 
+                L 150 10
+                L 140 0
+            " stroke="black" stroke-width="3" fill="cornflowerblue"/>
+            
+            <path class="M1" id="M1-L2" d="
+                M 145 50
+                L 140 55
+                L 140 100
+                L 150 90
+                L 150 55
+                L 145 50
+            " stroke="black" stroke-width="3" fill="cornflowerblue"/>
+
+            <path class="M1" id="M1-TOP" d="
+                M 140 0
+                L 190 0
+                L 180 10
+                L 150 10
+                L 140 0 
+            " stroke="black" stroke-width="3" fill="cornflowerblue"/>
+
+            <path class="M1" id="M1-R1" d="
+                M 190 0
+                L 180 10
+                L 180 45
+                L 185 50
+                L 190 45
+                L 190 0
+            " stroke="black" stroke-width="3" fill="blue"/>
+
+            <path class="M1" id="M1-R2" d="
+                M 185 50
+                L 180 55
+                L 180 90
+                L 190 100
+                L 190 55
+                L 185 50
+            " stroke="black" stroke-width="3" fill="blue"/>
+            <path class="M1" id="M1-BOT" d="
+                M 190 100
+                L 140 100
+                L 150 90
+                L 180 90
+                L 190 100
+            " stroke="black" stroke-width="3" fill="cornflowerblue"/>
+            <path class="M1" id="M1-MID" d="
+                M 150 45
+                L 145 50
+                L 150 55
+                L 180 55
+                L 185 50
+                L 180 45
+                L 150 45
+                " stroke="black" stroke-width="3" fill="blue" />
+    <!--         M2 -->
+            <path id="M2-L1" d="
+                M 200 0
+                L 200 45
+                L 205 50
+                L 210 45 
+                L 210 10
+                L 200 0
+            " stroke="black" stroke-width="3" fill="cornflowerblue"/>
+            <path id="M2-L2" d="
+                M 205 50
+                L 200 55
+                L 200 100
+                L 210 90
+                L 210 55
+                L 205 50
+            " stroke="black" stroke-width="3" fill="cornflowerblue"/>
+            <path id="M2-TOP" d="
+                M 200 0
+                L 250 0
+                L 240 10
+                L 210 10
+                L 200 0 
+            " stroke="black" stroke-width="3" fill="cornflowerblue"/>
+            <path id="M2-R1" d="
+                M 250 0
+                L 240 10
+                L 240 45
+                L 245 50
+                L 250 45
+                L 250 0
+            " stroke="black" stroke-width="3" fill="blue"/>
+             <path id="M2-R2" d="
+                M 245 50
+                L 240 55
+                L 240 90
+                L 250 100
+                L 250 55
+                L 245 50
+            " stroke="black" stroke-width="3" fill="blue"/>
+            <path id="M2-BOT" d="
+                M 250 100
+                L 200 100
+                L 210 90
+                L 240 90
+                L 250 100
+            " stroke="black" stroke-width="3" fill="cornflowerblue"/>
+            <path id="M2-MID" d="
+                M 210 45
+                L 205 50
+                L 210 55
+                L 240 55
+                L 245 50
+                L 240 45
+                L 210 45
+                " stroke="black" stroke-width="3" fill="blue" />
+            
+    <!--         DOTS 2 -->
+              <path id="dots-11" d="
+                M 260 30
+                L 260 40
+                L 270 40
+                L 270 30
+                L 260 30                  
+                " stroke="black" stroke-width="3" fill="gray" />
+            
+            <path id="dots-12" d="
+                M 260 70
+                L 260 60
+                L 270 60
+                L 270 70
+                L 260 70                  
+                " stroke="black" stroke-width="3" fill="gray" />
+            
+    <!--         SECOND -->
+            <path id="S1-L1" d="
+                M 280 0
+                L 280 45
+                L 285 50
+                L 290 45 
+                L 290 10
+                L 280 0
+            " stroke="black" stroke-width="3" fill="cornflowerblue"/>
+            <path id="S1-L2" d="
+                M 285 50
+                L 280 55
+                L 280 100
+                L 290 90
+                L 290 55
+                L 285 50
+            " stroke="black" stroke-width="3" fill="cornflowerblue"/>
+            <path id="S1-TOP" d="
+                M 280 0
+                L 330 0
+                L 320 10
+                L 290 10
+                L 280 0 
+            " stroke="black" stroke-width="3" fill="cornflowerblue"/>
+            <path id="S1-R1" d="
+                M 330 0
+                L 320 10
+                L 320 45
+                L 325 50
+                L 330 45
+                L 330 0
+            " stroke="black" stroke-width="3" fill="blue"/>
+             <path id="S1-R2" d="
+                M 325 50
+                L 320 55
+                L 320 90
+                L 330 100
+                L 330 55
+                L 325 50
+            " stroke="black" stroke-width="3" fill="blue"/>
+            <path id="S1-BOT" d="
+                M 330 100
+                L 280 100
+                L 290 90
+                L 320 90
+                L 330 100
+            " stroke="black" stroke-width="3" fill="cornflowerblue"/>
+            <path id="S1-MID" d="
+                M 290 45
+                L 285 50
+                L 290 55
+                L 320 55
+                L 325 50
+                L 320 45
+                L 290 45
+                " stroke="black" stroke-width="3" fill="blue" />
+    <!--         SECOND 2 -->
+            <path id="S2-L1" d="
+                M 340 0
+                L 340 45
+                L 345 50
+                L 350 45 
+                L 350 10
+                L 340 0
+            " stroke="black" stroke-width="3" fill="cornflowerblue"/>
+            <path id="S2-L2" d="
+                M 345 50
+                L 340 55
+                L 340 100
+                L 350 90
+                L 350 55
+                L 345 50
+            " stroke="black" stroke-width="3" fill="cornflowerblue"/>
+               <path id="S2-TOP" d="
+                M 340 0
+                L 390 0
+                L 380 10
+                L 350 10
+                L 340 0 
+            " stroke="black" stroke-width="3" fill="cornflowerblue"/>
+            <path id="S2-R1" d="
+                M 390 0
+                L 380 10
+                L 380 45
+                L 385 50
+                L 390 45
+                L 390 0
+            " stroke="black" stroke-width="3" fill="blue"/>
+            <path id="S2-R2" d="
+                M 385 50
+                L 380 55
+                L 380 90
+                L 390 100
+                L 390 55
+                L 385 50
+            " stroke="black" stroke-width="3" fill="blue"/>
+            <path id="S2-BOT" d="
+                M 390 100
+                L 340 100
+                L 350 90
+                L 380 90
+                L 390 100
+            " stroke="black" stroke-width="3" fill="cornflowerblue"/>
+            <path id="S2-MID" d="
+                M 350 45
+                L 345 50
+                L 350 55
+                L 380 55
+                L 385 50
+                L 380 45
+                L 350 45
+                " stroke="black" stroke-width="3" fill="blue" />
+
+            <!-- <path id="" d="
+                M 0 120
+                L 0 150
+                L 30 150
+                L 30 120
+                L 0 120
+            " stroke="black" fill="none" /> -->
+            <text id="month" x="50" y="150"></text>
+            <text id="date" x="140" y="150"></text> 
+            <text id="year" x="180" y="150"></text>
+
+            <text id="day" x="310" y="150"></text>
+            <text id="ampm" x="405" y="100" style="stroke-width:1"></text>            
+        </svg>  
+        
+
+    </div>
+    
+
+    <script type="text/javascript" src="tym.js"></script>
+
+</body>
+</html>
